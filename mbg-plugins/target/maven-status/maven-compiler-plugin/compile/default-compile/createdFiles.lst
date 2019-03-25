@@ -1,0 +1,4 @@
+com/own/mybatis/generator/plugins/JavaTypeResolverImpl.class
+com/own/mybatis/generator/plugins/IngoreSetterAndGetterPlugin.class
+com/own/mybatis/generator/plugins/ExampleEnhancedPlugin.class
+com/own/mybatis/generator/plugins/CommentGeneratorImpl.class

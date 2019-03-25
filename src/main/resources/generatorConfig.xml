@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="context2" defaultModelType="flat">
+        <!-- 不指定编码的话生成实体的中文注释会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <plugin type="com.own.mybatis.generator.plugins.ExampleEnhancedPlugin" />
+        <plugin type="com.own.mybatis.generator.plugins.IngoreSetterAndGetterPlugin" />
+        <commentGenerator type="com.own.mybatis.generator.plugins.CommentGeneratorImpl">
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@10.9.247.169:1521:lyy" userId="myapp" password="myapp">
+            <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:jcltdb" userId="c##pais" password="pais">-->
+            <!-- 解决获取不到注释的问题：针对oracle数据库 -->
+            <property name="remarksReporting" value="true"></property>
+            <!-- 解决获取不到注释的问题：针对mysql数据库 -->
+            <!-- <property name="useInformationSchema" value="true"></property> -->
+        </jdbcConnection>
+        <javaTypeResolver type="com.own.mybatis.generator.plugins.JavaTypeResolverImpl">
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.own.order.admin.entity" targetProject="/Users/liyuyao/Project/autocodiong" />
+        <sqlMapGenerator targetPackage="com.own.order.admin.repository" targetProject="/Users/liyuyao/Project/autocodiong" />
+        <javaClientGenerator targetPackage="com.own.order.admin.repository" targetProject="/Users/liyuyao/Project/autocodiong" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 如果数据库中有多个用户里面都有 sys_dic_category 表，会生成多套实体和Mapper，解决方案之一是在下面的 table 节中
+        配置 schema="数据库用户名，例如：oris" 属性，但这样生成的SQL语句都会变成 select * from oris.sys_dic_category 这样子，
+        以后如果想换一个别的用户名的库就会报找不到 oris 用户的错。所以还是不要配置 schema 属性，而是不给数据库用户 dba 权限，
+        只给 connect 和 resource 权限也可以解决生成多套 Mapper 的问题。 -->
+        <!-- <table alias="T" tableName="AUTH_DEPT" domainObjectName="Dept" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table> -->
+        <!-- <table alias="T" tableName="AUTH_USER" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table> -->
+
+        <table alias="T" tableName="SYS_USER" domainObjectName="User" enableCountByExample="true" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false" />
+        </table>
+    </context>
+</generatorConfiguration>
